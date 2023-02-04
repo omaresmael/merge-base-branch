@@ -17,11 +17,13 @@ async function run()
             currentPulls.forEach(pull => {
                 pullNumber = pull.number
                 try {
-                console.log(octokit.rest.pulls.updateBranch({
+                octokit.rest.pulls.updateBranch({
                     owner,
                     repo,
                     pull_number: pullNumber,
-                    }));
+                    }).then(function(error){
+                        console.log('whaaaat')
+                    });
                 console.log("pull request: "+pull.title+" has been update")
                 }
                 catch (error) {
@@ -30,7 +32,7 @@ async function run()
                 }
             })  
         } catch (error) {
-            console.log(error)
+            console.log('error')
         }
         
 
