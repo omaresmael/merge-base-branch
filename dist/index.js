@@ -9790,8 +9790,8 @@ async function run()
         state: 'open',
         mergeable
       });
-    console.log(currentPulls);
     currentPulls.forEach(pull => {
+        console.log(pull.data.mergeable);
         pullNumber = pull.number
         octokit.rest.pulls.updateBranch({
         owner,
