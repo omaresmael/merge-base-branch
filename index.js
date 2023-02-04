@@ -21,7 +21,7 @@ async function run()
             repo,
             pull_number: pullNumber,
             });
-        if (response.status !== 200) {
+        if (respnse.status !== 200) {
             console.log("pull request: "+pull.title+" can not be updated")
             console.log("please visit "+pull.url+" to update it manually")
         } 
