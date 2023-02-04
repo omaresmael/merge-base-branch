@@ -9783,6 +9783,12 @@ async function run()
 {
     const githubToken = core.getInput("GITHUB_TOKEN", { required: true });
     const octokit = new github.getOctokit(githubToken);
+    
+    const { data: currentPulls } = await octokit.rest.pulls.list({
+        owner,
+        repo,
+        state: 'open'
+      });
 
     currentPulls.forEach(pull => {
         pullNumber = pull.number
