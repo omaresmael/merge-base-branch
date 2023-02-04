@@ -9788,6 +9788,7 @@ async function run()
         owner,
         repo,
         state: 'open',
+        mergeable
       });
     console.log(currentPulls);
     currentPulls.forEach(pull => {
