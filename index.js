@@ -5,30 +5,31 @@ const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
 
 async function run()
 {
+    
     const githubToken = core.getInput("GITHUB_TOKEN", { required: true });
     const octokit = new github.getOctokit(githubToken);
-    
     const { data: currentPulls } = await octokit.rest.pulls.list({
         owner,
         repo,
-        state: 'open',
-      });
-      
+        state: 'open'
+    });
+
     currentPulls.forEach(pull => {
         pullNumber = pull.number
-        // octokit.rest.pulls.updateBranch({
-        // owner,
-        // repo,
-        // pull_number: pullNumber,
-        // });
-        let pullRequest = octokit.pulls.get({
+        try {
+        octokit.rest.pulls.updateBranch({
             owner,
             repo,
             pull_number: pullNumber,
-        })
-        console.log(pullRequest.data.mergeable)
+            });
+        console.log("pull request: "+pull.title+" has been update")
+        }
+        catch (error) {
+            console.log("pull request: "+pull.title+" can not be updated")
+            console.log("please visit "+pull.url+" to update it manually")
+        }
     })
 
-}
-
+} 
+    
 run();
