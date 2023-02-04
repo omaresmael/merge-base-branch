@@ -13,14 +13,20 @@ async function run()
         repo,
         state: 'open',
       });
+      
     currentPulls.forEach(pull => {
-        console.log(pull.data.mergeable);
         pullNumber = pull.number
-        octokit.rest.pulls.updateBranch({
-        owner,
-        repo,
-        pull_number: pullNumber,
-      });
+        // octokit.rest.pulls.updateBranch({
+        // owner,
+        // repo,
+        // pull_number: pullNumber,
+        // });
+        let pullRequest = octokit.pulls.get({
+            owner,
+            repo,
+            pull_number: pullNumber,
+        })
+        console.log(pullRequest.data.mergeable)
     })
 
 }
