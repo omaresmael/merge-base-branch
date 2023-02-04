@@ -16,7 +16,7 @@ async function run()
 
      currentPulls.forEach(async pull => {
         pullNumber = pull.number
-        updateBranch(pullNumber).then(() => {
+        updateBranch(octokit,pullNumber).then(() => {
             console.log('quote');
           }).catch((error) => {
             console.error(error);
@@ -32,7 +32,7 @@ async function run()
 
 } 
 
-function updateBranch(pullNumber) {
+function updateBranch(octokit,pullNumber) {
     octokit.rest.pulls.updateBranch({
         owner,
         repo,
