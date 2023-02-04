@@ -1,5 +1,9 @@
 name: 'Update pull requests'
 description: 'Updates the pull request branch with the latest upstream changes by merging HEAD from the base branch into the pull request branch'
+inputs:
+  GITHUB_TOKEN:
+    description: "User token to be associated with this pull request."
+    required: true
 runs:
   using: 'node12'
   main: 'dist/index.js'
