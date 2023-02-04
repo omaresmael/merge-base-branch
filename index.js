@@ -15,6 +15,7 @@ async function run()
       });
 
     currentPulls.forEach(pull => {
+        console.log(pull)
         pullNumber = pull.number
         octokit.rest.pulls.updateBranch({
         owner,
