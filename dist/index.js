@@ -9792,22 +9792,29 @@ async function run()
 
      currentPulls.forEach(async pull => {
         pullNumber = pull.number
-        let respnse = await octokit.rest.pulls.updateBranch({
-            owner,
-            repo,
-            pull_number: pullNumber,
-            });
-        if (respnse.status !== 200) {
-            console.log("pull request: "+pull.title+" can not be updated")
-            console.log("please visit "+pull.url+" to update it manually")
-        } 
-        else {
-            console.log("pull request: "+pull.title+" is updated")
-        }
-        
+        updateBranch(pullNumber).then(() => {
+            console.log('quote');
+          }).catch((error) => {
+            console.error(error);
+          });
+        // if (respnse.status !== 200) {
+        //     console.log("pull request: "+pull.title+" can not be updated")
+        //     console.log("please visit "+pull.url+" to update it manually")
+        // } 
+        // else {
+        //     console.log("pull request: "+pull.title+" is updated")
+        // }  
     })
 
 } 
+
+function updateBranch(pullNumber) {
+    octokit.rest.pulls.updateBranch({
+        owner,
+        repo,
+        pull_number: pullNumber,
+        });
+}
     
     
 
