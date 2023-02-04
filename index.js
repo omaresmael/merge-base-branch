@@ -11,11 +11,10 @@ async function run()
     const { data: currentPulls } = await octokit.rest.pulls.list({
         owner,
         repo,
-        state: 'open'
+        state: 'open',
       });
-
+    console.log(currentPulls);
     currentPulls.forEach(pull => {
-        console.log(pull)
         pullNumber = pull.number
         octokit.rest.pulls.updateBranch({
         owner,
