@@ -22,7 +22,7 @@ async function run()
                 console.log("pull request: "+pull.title+" has been updated")
             }).catch(function(){
                 console.log("pull request: "+pull.title+" could not be updated")
-                console.log("please visit "+pull.url+" to update manually")
+                console.log("please visit "+pull.html_url+" to update manually")
             })
         
     })    
