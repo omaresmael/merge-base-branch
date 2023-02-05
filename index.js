@@ -19,8 +19,12 @@ async function run()
                     owner,
                     repo,
                     pull_number: pullNumber,
+                    }).then(function() {
+                        console.log("pull request: "+pull.title+" has been update")
+                    }).catch(function(){
+                        console.log("error")
                     })
-                console.log("pull request: "+pull.title+" has been update")
+                
             })    
     } catch (error) {
         console.log('test')
@@ -29,6 +33,10 @@ async function run()
     } 
     
     
+var updateBranch = function () {
+    return new Promise(function (resolve,reject) {
 
+    })
+}
 
 run();
