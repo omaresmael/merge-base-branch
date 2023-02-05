@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: 18
       - name: update branches
-        uses: omaresmael/update-pull-requests@main
+        uses: omaresmael/update-pull-requests@v1.0
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 ```
