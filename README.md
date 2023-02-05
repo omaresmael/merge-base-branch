@@ -26,9 +26,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Set up Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: 12
+          node-version: 18
       - name: update branches
         uses: omaresmael/update-pull-requests@main
         with:
