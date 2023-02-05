@@ -5,38 +5,28 @@ const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
 
 async function run()
 {
-    try {
-        const githubToken = core.getInput("GITHUB_TOKEN", { required: true });
-        const octokit = new github.getOctokit(githubToken);
-        const { data: currentPulls } = await octokit.rest.pulls.list({
+    const githubToken = core.getInput("GITHUB_TOKEN", { required: true });
+    const octokit = new github.getOctokit(githubToken);
+    const { data: currentPulls } = await octokit.rest.pulls.list({
+        owner,
+        repo,
+        state: 'open'
+    });
+    currentPulls.forEach(pull => {
+        pullNumber = pull.number
+        octokit.rest.pulls.updateBranch({
             owner,
             repo,
-            state: 'open'
-        });
-            currentPulls.forEach(pull => {
-                pullNumber = pull.number
-                octokit.rest.pulls.updateBranch({
-                    owner,
-                    repo,
-                    pull_number: pullNumber,
-                    }).then(function() {
-                        console.log("pull request: "+pull.title+" has been update")
-                    }).catch(function(){
-                        console.log("error")
-                    })
-                
-            })    
-    } catch (error) {
-        console.log('test')
-    }
-    
-    } 
-    
-    
-var updateBranch = function () {
-    return new Promise(function (resolve,reject) {
-
-    })
+            pull_number: pullNumber,
+            }).then(function() {
+                console.log("pull request: "+pull.title+" has been updated")
+            }).catch(function(){
+                console.log("pull request: "+pull.title+" could not be updated")
+                console.log("please visit "+pull.url+" to update manually")
+            })
+        
+    })    
 }
+
 
 run();
