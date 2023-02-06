@@ -1,6 +1,6 @@
 # update pull requests action
 
-GitHub Action to update pull requests' branches with the Head of the base branch
+GitHub Action to update pull requests' branches with the Head of the base branch by Merging the base branch into the pr's branch
 
 ## Inputs
 
