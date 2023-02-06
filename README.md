@@ -6,8 +6,7 @@ GitHub Action to update pull requests' branches with the Head of the base branch
 
 ### `GITHUB_TOKEN`
 
-**Required** The token to be used for creating the pull request. Can be set to the one given for the workflow or another user.
-
+**Required** The token to be used for updating the pull requests.
 ## Example usage
 
 ```YML
