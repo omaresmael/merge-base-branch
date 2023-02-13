@@ -1,4 +1,4 @@
-# update pull requests action
+# Merge base branch action
 
 GitHub Action to update pull requests' branches with the Head of the base branch by Merging the base branch into the pr's branch
 
@@ -6,11 +6,11 @@ GitHub Action to update pull requests' branches with the Head of the base branch
 
 ### `GITHUB_TOKEN`
 
-**Required** The token to be used for updating the pull requests.
+**Required**
 ## Example usage
 
 ```YML
-name: Sync branches with their base
+name: Sync pr's branches with their base branch
 
 on:
   push:
@@ -28,8 +28,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: update branches
-        uses: omaresmael/update-pull-requests@v1.0
+      - name: Merge base branch
+        uses: omaresmael/merge-base-branch@v1
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 ```
