@@ -1,5 +1,5 @@
 {
-  "name": "update-pull-requests",
+  "name": "merge-base-branh",
   "version": "1.0.0",
   "description": "Updates the pull request branch with the latest upstream changes by merging HEAD from the base branch into the pull request branch",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/omaresmael/update-pull-requests.git"
+    "url": "git+https://github.com/omaresmael/merge-base-branch.git"
   },
   "author": "omar esmaeel",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/omaresmael/update-pull-requests/issues"
+    "url": "https://github.com/omaresmael/merge-base-branch/issues"
   },
-  "homepage": "https://github.com/omaresmael/update-pull-requests#readme",
+  "homepage": "https://github.com/omaresmael/merge-base-branch#readme",
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/github": "^5.1.1"
